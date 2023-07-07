@@ -5,7 +5,7 @@ using TMPro;
 using System;
 public class LobbyCreaterSimple : MonoBehaviour
 {
-    public TextMeshProUGUI lobbyName, maxPlayerCount;
+    public TMP_InputField lobbyName, maxPlayerCount;
     public TestLobby testLobby;
     void Update()
     {
@@ -13,7 +13,11 @@ public class LobbyCreaterSimple : MonoBehaviour
     }
 
     public void CreateLobby(){
-        int maxPlayers = System.Convert.ToInt32(maxPlayerCount);
+        int maxPlayers;
+        int.TryParse(maxPlayerCount.text.ToString(), out maxPlayers);
+        Debug.Log(maxPlayers);
+        Debug.Log(maxPlayerCount.text);
+        Debug.Log(maxPlayerCount.text.ToString());
         testLobby.CreateNewLobby(lobbyName.text, maxPlayers);
     }
 }
